@@ -3,3 +3,14 @@ html
     title= title
   body
     h1= message
+    form(method='POST' action='/quotes')
+     div.form-group
+       label(for='name') Name:
+       input#name.form-control(type='text', placeholder='first and last' name='name')
+     div.form-group
+       label(for='email') Email:
+       input#email.form-control(type='email', placeholder='name@email.com' name='email')
+     div.form-group
+       label(for='favoriteBook') Favorite Book:
+       input#favoriteBook.form-control(type='text', placeholder='title of book' name='favoriteBook')
+     button.btn.btn-primary(type='submit') Sign up
