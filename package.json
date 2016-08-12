@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/birksy89/Express-Playground#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "pug": "^0.1.0"
   },
