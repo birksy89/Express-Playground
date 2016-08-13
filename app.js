@@ -39,6 +39,8 @@ app.get('/list', function(req, res) {
     db.collection('quotes').find().toArray(function(err, results) {
         console.log(results)
             // send HTML file populated with quotes here
+
+            res.render('list', results);
     })
 });
 
