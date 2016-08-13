@@ -16,15 +16,22 @@ app.get('/', function (req, res) {
 });
 
 app.post('/quotes', (req, res) => {
-  console.log('Hellooooooooooooooooo!')
-  console.log(req.body)
+  //console.log('Hellooooooooooooooooo!')
+  //console.log(req.body)
+
+  db.collection('quotes').save(req.body, (err, result) => {
+   if (err) return console.log(err)
+
+   console.log('saved to database')
+   res.redirect('/')
+ })
 })
 
 
 //Database Connection
 var db;
 
-MongoClient.connect(' mongodb://admin:admin123@ds153815.mlab.com:53815/express-playground', (err, database) => {
+MongoClient.connect('mongodb://admin:admin123@ds153815.mlab.com:53815/express-playground', (err, database) => {
   if (err) return console.log(err)
     db = database
 
