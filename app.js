@@ -1,5 +1,9 @@
 var express = require('express');
 var bodyParser= require('body-parser')
+var MongoClient = require('mongodb').MongoClient
+
+
+
 
 var app = express();
 
@@ -16,6 +20,15 @@ app.post('/quotes', (req, res) => {
   console.log(req.body)
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+
+//Database Connection
+var db;
+
+MongoClient.connect(' mongodb://admin:admin123@ds153815.mlab.com:53815/express-playground', (err, database) => {
+  if (err) return console.log(err)
+    db = database
+
+    app.listen(3000, function () {
+      console.log('Example app listening on port 3000!');
+    });
+})
