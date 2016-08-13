@@ -40,7 +40,7 @@ app.get('/list', function(req, res) {
         console.log(results)
             // send HTML file populated with quotes here
 
-            res.render('list', results);
+            res.render('list', {people:results});
     })
 });
 

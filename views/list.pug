@@ -7,3 +7,7 @@ html
     ul
       each val, index in {1:'one',2:'two',3:'three'}
         li= index + ': ' + val
+
+    ul
+      each person in people
+        li= person.name + ': ' + person.email
