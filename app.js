@@ -12,7 +12,7 @@ var db = mongoose.connection;
 app.get('/', function(req, res) {
     res.render('index', {
         title: 'Hey',
-        message: 'Hello there!'
+        message: 'This is the start of my API'
     });
 });
 
