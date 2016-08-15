@@ -1,17 +1,13 @@
 var express = require('express');
-var bodyParser = require('body-parser')
-var MongoClient = require('mongodb').MongoClient
-
-
-
-
 var app = express();
+var bodyParser = require('body-parser')
+var mongoose = require('mongoose');
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}))
+//var MongoClient = require('mongodb').MongoClient
 
-app.set('view engine', 'pug');
+//New way of connecting to Mongo / mongoose
+mongoose.connect('mongodb://admin:admin123@ds153815.mlab.com:53815/express-playground');
+var db = mongoose.connection;
 
 app.get('/', function(req, res) {
     res.render('index', {
@@ -19,6 +15,22 @@ app.get('/', function(req, res) {
         message: 'Hello there!'
     });
 });
+
+
+app.listen(3000, function() {
+    console.log('Example app listening on port 3000!');
+});
+
+
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
+
+app.set('view engine', 'pug');
+
+
+
 
 app.post('/quotes', (req, res) => {
     //console.log('Hellooooooooooooooooo!')
@@ -40,19 +52,21 @@ app.get('/list', function(req, res) {
         console.log(results)
             // send HTML file populated with quotes here
 
-            res.render('list', {people:results});
+        res.render('list', {
+            people: results
+        });
     })
 });
 
 
 //Database Connection
-var db;
-
-MongoClient.connect('mongodb://admin:admin123@ds153815.mlab.com:53815/express-playground', (err, database) => {
-    if (err) return console.log(err)
-    db = database
-
-    app.listen(3000, function() {
-        console.log('Example app listening on port 3000!');
-    });
-})
+// var db;
+//
+// MongoClient.connect('mongodb://admin:admin123@ds153815.mlab.com:53815/express-playground', (err, database) => {
+//     if (err) return console.log(err)
+//     db = database
+//
+//     app.listen(3000, function() {
+//         console.log('Example app listening on port 3000!');
+//     });
+// })
