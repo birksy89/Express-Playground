@@ -44,6 +44,18 @@ app.get('/api/books', function(req, res) {
 });
 
 
+app.get('/api/books/:_id', function(req, res) {
+
+  Book.getBookById(req.params._id,function(err,book){
+      if(err){
+        throw err;
+      }
+      res.json(book);
+  })
+
+});
+
+
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');
 });
