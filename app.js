@@ -16,6 +16,10 @@ app.get('/', function(req, res) {
     });
 });
 
+app.get('/api/genres', function(req, res) {
+  //Comming Soon!
+});
+
 
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');
