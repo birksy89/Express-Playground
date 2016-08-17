@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 
 //Adding models
 Genre = require('./models/genre');
+Book = require('./models/book');
 
 
 //var MongoClient = require('mongodb').MongoClient
@@ -27,6 +28,17 @@ app.get('/api/genres', function(req, res) {
         throw err;
       }
       res.json(genres);
+  })
+
+});
+
+app.get('/api/books', function(req, res) {
+
+  Book.getBooks(function(err,books){
+      if(err){
+        throw err;
+      }
+      res.json(books);
   })
 
 });
