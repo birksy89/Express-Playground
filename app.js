@@ -3,10 +3,14 @@ var app = express();
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
 
+//Adding models
+Genre = require('./models/genre');
+
+
 //var MongoClient = require('mongodb').MongoClient
 
 //New way of connecting to Mongo / mongoose
-mongoose.connect('mongodb://admin:admin123@ds153815.mlab.com:53815/express-playground');
+mongoose.connect('mongodb://admin:admin123@ds161295.mlab.com:61295/mongo-bookstore');
 var db = mongoose.connection;
 
 app.get('/', function(req, res) {
@@ -17,7 +21,14 @@ app.get('/', function(req, res) {
 });
 
 app.get('/api/genres', function(req, res) {
-  //Comming Soon!
+
+  Genre.getGenres(function(err,genres){
+      if(err){
+        throw err;
+      }
+      res.json(genres);
+  })
+
 });
 
 
