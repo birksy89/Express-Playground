@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 //Genre Schema
 var bookSchema = mongoose.Schema({
-    name: {
+    title: {
         type: String,
         required: true
     },
@@ -50,4 +50,10 @@ module.exports.getBooks = function(callback, limit) {
 //Get Single Book
 module.exports.getBookById = function(bookId,callback) {
     Book.findById(bookId, callback);
+}
+
+
+//Add Book
+module.exports.addBook = function(book,callback){
+  Book.create(book,callback);
 }
