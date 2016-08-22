@@ -7,6 +7,10 @@ var mongoose = require('mongoose');
 Genre = require('./models/genre');
 Book = require('./models/book');
 
+//Setting Body Parser - Middleware
+
+app.use(bodyParser.json());
+
 
 //var MongoClient = require('mongodb').MongoClient
 
@@ -31,6 +35,23 @@ app.get('/api/genres', function(req, res) {
   })
 
 });
+
+
+//Adding Genre
+app.post('/api/genres', function(req, res) {
+
+  var genre = req.body;
+
+  Genre.addGenre(genre,function(err,genre){
+      if(err){
+        throw err;
+      }
+      res.json(genre);
+  })
+
+});
+
+
 
 app.get('/api/books', function(req, res) {
 
@@ -62,9 +83,7 @@ app.listen(3000, function() {
 
 
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}))
+
 
 app.set('view engine', 'pug');
 
