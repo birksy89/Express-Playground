@@ -25,6 +25,19 @@ app.get('/', function(req, res) {
     });
 });
 
+
+app.get('/genres', function(req, res) {
+  Genre.getGenres(function(err,genres){
+      if(err){
+        throw err;
+      }
+
+      res.render('list', {
+          items: genres
+      });
+  })
+});
+
 app.get('/api/genres', function(req, res) {
 
   Genre.getGenres(function(err,genres){
@@ -147,9 +160,6 @@ app.delete('/api/books/:_id', function(req, res) {
   })
 
 });
-
-
-
 
 
 app.listen(3000, function() {

@@ -1,13 +1,9 @@
 html
   head
-    title List View
+    title List Genres
   body
-    h1 Hello
-    h2 World
-    ul
-      each val, index in {1:'one',2:'two',3:'three'}
-        li= index + ': ' + val
+    h1 Genres
 
     ul
-      each person in people
-        li= person.name + ': ' + person.email
+      each item in items
+        li= item.name
