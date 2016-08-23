@@ -135,6 +135,20 @@ app.post('/api/books', function(req, res) {
 
 });
 
+//"Front-End" View For a Single Book
+app.get('/books/:_id', function(req, res) {
+
+  Book.getBookById(req.params._id,function(err,book){
+      if(err){
+        throw err;
+      }
+
+      res.render('detail-book', {
+          item: book
+      });
+  })
+
+});
 
 app.get('/api/books/:_id', function(req, res) {
 
