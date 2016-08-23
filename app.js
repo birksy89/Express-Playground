@@ -26,13 +26,14 @@ app.get('/', function(req, res) {
 });
 
 
+//"Front-End" View of Genres
 app.get('/genres', function(req, res) {
   Genre.getGenres(function(err,genres){
       if(err){
         throw err;
       }
 
-      res.render('list', {
+      res.render('list-genres', {
           items: genres
       });
   })
@@ -93,6 +94,19 @@ app.delete('/api/genres/:_id', function(req, res) {
 });
 
 
+
+//"Front-End" View of Books
+app.get('/books', function(req, res) {
+  Book.getBooks(function(err,books){
+      if(err){
+        throw err;
+      }
+
+      res.render('list-books', {
+          items: books
+      });
+  })
+});
 
 app.get('/api/books', function(req, res) {
 
