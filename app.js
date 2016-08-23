@@ -103,6 +103,7 @@ app.get('/books', function(req, res) {
       }
 
       res.render('list-books', {
+        title: "My Book List",
           items: books
       });
   })
