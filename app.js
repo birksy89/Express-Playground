@@ -66,6 +66,20 @@ app.put('/api/genres/:_id', function(req, res) {
 });
 
 
+//Deleting a Genre
+app.delete('/api/genres/:_id', function(req, res) {
+  var id = req.params._id;
+
+  Genre.removeGenre(id,function(err,genre){
+      if(err){
+        throw err;
+      }
+      res.json(genre);
+  })
+
+});
+
+
 
 app.get('/api/books', function(req, res) {
 
