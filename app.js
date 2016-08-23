@@ -135,6 +135,20 @@ app.put('/api/books/:_id', function(req, res) {
 });
 
 
+//Deleting a Book
+app.delete('/api/books/:_id', function(req, res) {
+  var id = req.params._id;
+
+  Book.removeBook(id,function(err,book){
+      if(err){
+        throw err;
+      }
+      res.json(book);
+  })
+
+});
+
+
 
 
 
