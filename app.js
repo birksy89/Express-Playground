@@ -12,6 +12,12 @@ Book = require('./models/book');
 app.use(bodyParser.json());
 
 
+//This needs to be added to accept the POST requests from the form, not just PostMan
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+
 //var MongoClient = require('mongodb').MongoClient
 
 //New way of connecting to Mongo / mongoose
@@ -20,8 +26,8 @@ var db = mongoose.connection;
 
 app.get('/', function(req, res) {
     res.render('index', {
-        title: 'Hey',
-        message: 'This is the start of my API'
+        title: 'Bookstore',
+        message: 'Use this form to add a Genre'
     });
 });
 
@@ -55,13 +61,17 @@ app.get('/api/genres', function(req, res) {
 app.post('/api/genres', function(req, res) {
 
   var genre = req.body;
+  console.log(genre);
 
   Genre.addGenre(genre,function(err,genre){
       if(err){
         throw err;
       }
-      res.json(genre);
+        res.redirect('/')
   })
+
+
+
 
 });
 
